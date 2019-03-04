@@ -7,20 +7,31 @@ class StudentForm extends Component {
     contact: null
   }
 
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
+  handleClick = e => {
+    e.preventDefault();
+    this.props.addStudent(this.state);
+  }
+
   render() {
     return(
       <form className="row no-gutters">
         <div className="form-group col">
-          <input type="text" id="name" className="form-control" placeholder="Name"/>
+          <input type="text" id="name" onChange={ this.handleChange } className="form-control" placeholder="Name"/>
         </div>
         <div className="form-group col  mx-2">
-          <input type="text" id="class" className="form-control" placeholder="Class"/>
+          <input type="text" id="class" onChange={ this.handleChange } className="form-control" placeholder="Class"/>
         </div>
         <div className="form-group col">
-          <input type="text" id="contact"className="form-control" placeholder="Phone Number"/>
+          <input type="text" id="contact" onChange={ this.handleChange } className="form-control" placeholder="Phone Number"/>
         </div>
         <div className="form-group col-2 ml-2">
-          <button className="btn btn-success btn-block">SUBMIT</button>
+          <button onClick={ this.handleClick } className="btn btn-success btn-block">SUBMIT</button>
         </div>
       </form>
     )
