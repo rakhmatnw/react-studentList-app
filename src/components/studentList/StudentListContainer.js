@@ -9,6 +9,14 @@ class StudentListContainer extends Component {
     ]
   }
 
+  addStudent = (student) => {
+    student.id = this.state.students.length;
+    const studentList = [...this.state.students, student];
+    this.setState({
+      students: studentList
+    })
+  }
+
   render(){
     return(
       <div className="container text-center">
