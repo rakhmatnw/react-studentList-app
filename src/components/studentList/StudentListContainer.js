@@ -4,9 +4,7 @@ import StudentForm from './forms/StudentForm';
 
 class StudentListContainer extends Component {
   state = {
-    students: [
-      {id:0, name: 'Ade', class:'back-end', contact:'0123'}
-    ]
+    students: []
   }
 
   addStudent = (student) => {
@@ -17,12 +15,24 @@ class StudentListContainer extends Component {
     })
   }
 
+  removeStudent = (id) => {
+    const student = this.state.students.filter(student => {
+      return student.id !== id;
+    })
+
+    const studentList = student;
+    console.log(studentList);
+    this.setState({
+      students: studentList
+    })
+  }
+
   render(){
     return(
       <div className="container text-center">
         <h1 className="mb-5">Student List</h1>
         <StudentForm addStudent={this.addStudent}/>
-        <StudentTable students={this.state.students}/>
+        <StudentTable students={this.state.students} removeStudent={this.removeStudent}/>
       </div>
     )
   }

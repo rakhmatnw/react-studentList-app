@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StudentTable = ({students}) => {
+const StudentTable = ({students, removeStudent}) => {
 
   const studentList = students.map(student => {
     return(
@@ -11,7 +11,7 @@ const StudentTable = ({students}) => {
         <th>{student.contact}</th>
         <th>
           <button className="btn btn-primary mr-1">edit</button>
-          <button className="btn btn-danger">delete</button>
+          <button className="btn btn-danger" onClick={() => removeStudent(student.id)}>delete</button>
         </th>
       </tr>
     )
